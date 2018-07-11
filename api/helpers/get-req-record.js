@@ -9,7 +9,7 @@ module.exports = {
 
   inputs: {
     model:{
-      type: 'object',
+      type: {},
     }
   },
 

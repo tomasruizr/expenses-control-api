@@ -9,13 +9,13 @@ module.exports = {
 
   inputs: {
     model:{
-      type: 'object'
+      type: {}
     },
     id: {
-      type: 'array'
+      type: 'number'
     },
     data: {
-      type: 'object'
+      type: {}
     }
   },
 
