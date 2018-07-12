@@ -9,9 +9,13 @@
  * https://sailsjs.com/config/bootstrap
  */
 // const generateMockData = require ( '../../buildScripts/generateMockDataSails' );
+const schedule = require('node-schedule');
 module.exports.bootstrap = async function( done ) {
   // By convention, this is a good place to set up fake data during development.
   // generateMockData.mock( sails );
+  sails.config.cron.crons().forEach((item) => {
+    schedule.scheduleJob(item.interval, item.method);
+  });
   // Don't forget to trigger `done()` when this bootstrap function's logic is finished.
   // (otherwise your server will never lift, since it's waiting on the bootstrap)
   return done();

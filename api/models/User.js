@@ -24,6 +24,10 @@ module.exports = {
     lastName: {
       type: 'string'
     },
+    isActive: {
+      type: 'boolean',
+      defaultsTo: true
+    }
   },
 
 };

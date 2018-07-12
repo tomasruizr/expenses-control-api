@@ -19,6 +19,9 @@ module.exports = {
     },
     name: {
       type: 'string'
+    },
+    isActive: {
+      type: 'boolean'
     }
 
   },

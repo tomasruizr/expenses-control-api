@@ -37,6 +37,7 @@ module.exports = {
     let previous = await Operation.findOne(data.id);
     await sails.helpers.rollbackOperation(data.id);
     await sails.helpers.performOperation.with({
+      budget: data.budget || previous.budget,
       account: data.account || previous.account,
       amount: data.amount || previous.account,
       isDeposit: data.isDeposit || previous.isDeposit || false
@@ -53,6 +54,7 @@ module.exports = {
   async create(req, res) {
     let data = await sails.helpers.getReqRecord(Operation, req);
     await sails.helpers.performOperation.with({
+      budget: data.budget,
       account: data.account,
       amount: data.amount,
       isDeposit: data.isDeposit || false

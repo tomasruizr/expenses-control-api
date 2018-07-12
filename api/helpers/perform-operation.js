@@ -13,6 +13,11 @@ module.exports = {
       description: 'the account id',
       required: true
     },
+    budget: {
+      type: 'number',
+      description: 'the budget id',
+      required: true
+    },
     amount: {
       type: 'number',
       description: 'the amount to add or substract from the account',
@@ -42,6 +47,10 @@ module.exports = {
       description: 'Insuficient funds in the account to perform the operation',
       responseType: 'notFound'
     },
+    budgetExceeded: {
+      description: 'The amount is larger than the budget left for this period',
+      responseType: 'notFound'
+    },
     notFound: {
       description: 'No user with the specified ID was found in the database.',
       responseType: 'notFound'
@@ -50,6 +59,8 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
+    let prevBudget = await Budget.findOne(inputs.budget);
+    let budget = Object.assign({}, prevBudget);
     let previous = await Account.findOne(inputs.account);
     let account = Object.assign({}, previous);
     if (!account){
@@ -65,22 +76,22 @@ module.exports = {
       if (account.balance < 0){
         throw 'insufficientFunds';
       }
+      budget.balance -= inputs.amount;
+      if (budget.balance < 0){
+        throw 'budgetExceeded';
+      }
     }
-    // await Account.update(inputs.account, account);
     await sails.helpers.updateAndPublish.with({
-      // id: inputs.account,
       previous,
       data: account,
       model: Account
     });
-    // Account.publish([inputs.account], {
-    //   verb: 'updated',
-    //   data: account
-    // }, this.req);
+    await sails.helpers.updateAndPublish.with({
+      previus: prevBudget,
+      data: budget,
+      model: Budget
+    });
     return exits.success(true);
-
   }
-
-
 };
 

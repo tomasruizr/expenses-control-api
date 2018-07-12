@@ -13,7 +13,11 @@ module.exports = {
       unique: true,
       autoIncrement: true
     },
-    name:'string'
+    name:'string',
+    isActive: {
+      type: 'boolean',
+      defaultsTo: true
+    }
 
   },
 

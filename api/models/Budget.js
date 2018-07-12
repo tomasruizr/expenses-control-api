@@ -18,9 +18,16 @@ module.exports = {
     amount: {
       type: 'number'
     },
-    isPercentage: {
-      type: 'boolean'
+    anualAmount: {
+      type: 'number'
     },
+    balance: {
+      type: 'number'
+    },
+    isActive: {
+      type: 'boolean',
+      defaultsTo: true
+    }
   },
 
 };
