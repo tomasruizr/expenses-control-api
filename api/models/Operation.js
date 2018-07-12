@@ -19,7 +19,8 @@ module.exports = {
     budget:'number',
     account:'number',
     destination:'number',
-    isDeposit: 'boolean'
+    isDeposit: 'boolean',
+    date: { type: 'ref', columnType: 'datetime' }
   },
 
 };

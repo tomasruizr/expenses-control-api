@@ -16,7 +16,6 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-    console.log(inputs.operation);
     let operation = await Operation.findOne(inputs.operation);
     let account = await Account.findOne(operation.account);
     if (operation.isDeposit) {
