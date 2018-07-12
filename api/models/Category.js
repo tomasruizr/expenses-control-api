@@ -14,6 +14,10 @@ module.exports = {
       autoIncrement: true
     },
     name:'string',
+    isDeposit: {
+      type: 'boolean',
+      defaultsTo: false
+    },
     isActive: {
       type: 'boolean',
       defaultsTo: true

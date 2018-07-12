@@ -17,32 +17,20 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     let operation = await Operation.findOne(inputs.operation);
-    let prevBudget = await Budget.findOne(operation.budget);
-    let budget = Object.assign({}, prevBudget);
     let previous = await Account.findOne(operation.account);
-    let account = Object.assign({}, previous);
+    let data = Object.assign({}, previous);
     if (operation.isDeposit) {
-      account.balance -= operation.amount;
-      budget.balance -= operation.amount;
+      data.balance -= operation.amount;
     }
     else {
-      account.balance += operation.amount;
-      budget.balance += operation.amount;
+      data.balance += operation.amount;
     }
     await sails.helpers.updateAndPublish.with({
       model: Account,
-      data: account,
+      data,
       previous
     });
-    await sails.helpers.updateAndPublish.with({
-      model: Budget,
-      data: budget,
-      previous: prevBudget
-    });
     return exits.success();
-
   }
-
-
 };
 

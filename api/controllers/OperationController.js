@@ -5,43 +5,46 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
-module.exports = {
+function async performOperation(data){
+  if (data.isDeposit){
+    await sails.helpers.performIncome.with({
+      model: Account,
+      id: data.account,
+      amount: data.amount
+    });
+    if (data.budget) {
+      await sails.helpers.performIncome.with({
+        model: Budget,
+        id: data.budget,
+        amount: data.amount
+      });
+    }
+  } else {
+    await sails.helpers.performExpense.with({
+      model: Account,
+      id: data.account,
+      amount: data.amount
+    });
+    if (data.budget) {
+      await sails.helpers.performExpense.with({
+        model: Budget,
+        id: data.budget,
+        amount: data.amount
+      });
+    }
+  }
+}
 
-  async makeTransfer(req, res){
-    let data = req.body;
-    await sails.helpers.performOperation.with({
-      account: data.origin,
-      amount: data.amount,
-      isDeposit: false
-    });
-    await sails.helpers.performOperation.with({
-      account: data.destination,
-      amount: data.amount,
-      isDeposit: true
-    });
-    let newInstance = await sails.helpers.createAndPublish.with({
-      model: Operation,
-      req,
-      data: {
-        account: data.origin,
-        destination: data.destination,
-        amount: data.amount,
-        description: data.description
-      }
-    });
-    res.ok(newInstance);
-  },
+module.exports = {
 
   async update(req, res){
     let data = await sails.helpers.getReqRecord(Operation, req);
     let previous = await Operation.findOne(data.id);
-    await sails.helpers.rollbackOperation(data.id);
-    await sails.helpers.performOperation.with({
-      budget: data.budget || previous.budget,
-      account: data.account || previous.account,
-      amount: data.amount || previous.account,
-      isDeposit: data.isDeposit || previous.isDeposit || false
-    });
+    await sails.helpers.rollbackAccountOperation(data.id);
+    if (previous.budget) {
+      await sails.helpers.rollbackBudgetOperation(data.id);
+    }
+    await performOperation(data);
     await sails.helpers.updateAndPublish.with({
       model: Operation,
       previous,
@@ -53,12 +56,7 @@ module.exports = {
 
   async create(req, res) {
     let data = await sails.helpers.getReqRecord(Operation, req);
-    await sails.helpers.performOperation.with({
-      budget: data.budget,
-      account: data.account,
-      amount: data.amount,
-      isDeposit: data.isDeposit || false
-    });
+    await performOperation(data);
     let newInstance = await sails.helpers.createAndPublish.with({
       model: Operation,
       req,
@@ -70,7 +68,10 @@ module.exports = {
   async destroy(req, res){
     let data = await sails.helpers.getReqRecord(Operation, req);
     let previous = await Operation.findOne(data.id);
-    await sails.helpers.rollbackOperation(data.id);
+    await sails.helpers.rollbackAccountOperation(data.id);
+    if (previous.budget) {
+      await sails.helpers.rollbackBudgetOperation(data.id);
+    }
     await sails.helpers.destroyAndPublish.with({
       model: Operation,
       id: data.id,
