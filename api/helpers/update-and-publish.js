@@ -9,13 +9,16 @@ module.exports = {
 
   inputs: {
     model:{
-      type: {}
+      type: 'ref'
     },
-    id: {
-      type: 'number'
+    req:{
+      type: 'ref'
+    },
+    previous: {
+      type: 'ref'
     },
     data: {
-      type: {}
+      type: 'ref'
     }
   },
 
@@ -30,8 +33,9 @@ module.exports = {
     await inputs.model.update(inputs.id || inputs.data.id, inputs.data);
     inputs.model.publish([inputs.id || inputs.data.id], {
       verb: 'updated',
-      data: inputs.data
-    }, this.req);
+      data: inputs.data,
+      previous: inputs.previous
+    });
     return exits.success();
 
   }

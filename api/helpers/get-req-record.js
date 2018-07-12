@@ -9,7 +9,10 @@ module.exports = {
 
   inputs: {
     model:{
-      type: {},
+      type: 'ref',
+    },
+    req:{
+      type: 'ref'
     }
   },
 
@@ -25,12 +28,12 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-    let req = this.req;
-    var values = req.allParams();
+    let req = inputs.req;
+    let values = req.allParams();
 
     // Attempt to JSON parse any collection attributes into arrays.  This is to allow
     // setting collections using the shortcut routes.
-    _.each(model.attributes, (attrDef, attrName) => {
+    _.each(inputs.model.attributes, (attrDef, attrName) => {
       if (attrDef.collection && (!req.body || !req.body[attrName]) && (req.query && _.isString(req.query[attrName]))) {
         try {
           values[attrName] = JSON.parse(req.query[attrName]);

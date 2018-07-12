@@ -18,6 +18,7 @@ module.exports = {
     category: 'number',
     budget:'number',
     account:'number',
+    destination:'number',
     isDeposit: 'boolean'
   },
 

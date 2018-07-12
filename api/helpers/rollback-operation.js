@@ -12,18 +12,11 @@ module.exports = {
       type: 'number'
     }
   },
-
-
-  exits: {
-    // success: {
-    //   outputFriendlyName: 'rollback success',
-    //   outputType: 'boolean'
-    // },
-  },
+  exits: {},
 
 
   fn: async function (inputs, exits) {
-
+    console.log(inputs.operation);
     let operation = await Operation.findOne(inputs.operation);
     let account = await Account.findOne(operation.account);
     if (operation.isDeposit) {
@@ -32,7 +25,7 @@ module.exports = {
     else {
       account.balance += operation.amount;
     }
-    sails.helpers.updateAndPublish.wiht({
+    await sails.helpers.updateAndPublish.with({
       // id: account.id,
       model: Account,
       data: account

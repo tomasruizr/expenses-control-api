@@ -50,7 +50,8 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-    let account = await Account.findOne(inputs.account);
+    let previous = await Account.findOne(inputs.account);
+    let account = Object.assign({}, previous);
     if (!account){
       throw 'accountNotFount';
     }
@@ -65,17 +66,17 @@ module.exports = {
         throw 'insufficientFunds';
       }
     }
-    sails.helpers.updateAndPublish.with({
+    // await Account.update(inputs.account, account);
+    await sails.helpers.updateAndPublish.with({
       // id: inputs.account,
+      previous,
       data: account,
       model: Account
     });
-    // await Account.update(inputs.account, account);
     // Account.publish([inputs.account], {
     //   verb: 'updated',
     //   data: account
     // }, this.req);
-    // All done.
     return exits.success(true);
 
   }
