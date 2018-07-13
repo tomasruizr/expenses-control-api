@@ -32,16 +32,6 @@ module.exports = {
       outputFriendlyName: 'Operation Success',
       outputDescription: 'Was Operation Successful',
     },
-
-    recordNotFount: {
-      description: 'The data provided is not valid to operate a transaction'
-    },
-    invalidAmount: {
-      description: 'Invalid amount. Should be a positive number'
-    },
-    insufficientFunds: {
-      description: 'Insuficient funds in the data to perform the operation',
-    },
     originAndDestinationMustDiffer: {
       description: 'Origin and Destination records must be differents',
     }
@@ -52,30 +42,16 @@ module.exports = {
     if (inputs.origin === inputs.destination){
       throw 'originAndDestinationMustDiffer';
     }
-    let previousOrigin = await inputs.model.findOne(inputs.origin);
-    let previousDestination = await inputs.model.findOne(inputs.destination);
-    if (!previousOrigin || !previousDestination){
-      throw 'recordNotFount';
-    }
-    if (typeof inputs.amount !== 'number' || inputs.amount <= 0){
-      throw 'invalidAmount';
-    }
-    let origin = Object.assign({}, previousOrigin);
-    let destination = Object.assign({}, previousDestination);
-    origin.balance -= inputs.amount;
-    if (previousOrigin.balance < 0){
-      throw 'insufficientFunds';
-    }
-    destination.balance += inputs.amount;
-    await sails.helpers.updateAndPublish.with({
-      previous:previousOrigin,
-      data:origin,
-      model: inputs.model
-    });
-    await sails.helpers.updateAndPublish.with({
-      previous: previousDestination,
-      data: destination,
-      model: inputs.model
+    let substraction = await sails.helpers.validateOperation.with({
+      model: inputs.model,
+      id: inputs.origin,
+      amount: inputs.amount
+    }).intercept('insufficientFunds', sails.helpers.throwInsufficientFunds(inputs.model));
+    await sails.helpers.updateAndPublish.with(substraction);
+    await sails.helpers.performIncome.with({
+      model: inputs.model,
+      id: inputs.destination,
+      amount: inputs.amount
     });
     return exits.success(true);
   }

@@ -31,7 +31,7 @@ module.exports = {
   fn: async function (inputs, exits) {
 
     await inputs.model.update(inputs.data.id, inputs.data);
-    inputs.model.publish([inputs.id || inputs.data.id], {
+    inputs.model.publish([inputs.data.id], {
       verb: 'updated',
       data: inputs.data,
       previous: inputs.previous

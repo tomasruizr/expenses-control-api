@@ -1,12 +1,4 @@
 module.exports = {
-
-
-  friendlyName: 'Perform Income Operation',
-
-
-  description: 'Performs the addition of the amount of the operation to the data',
-
-
   inputs: {
     model:{
       type: 'ref'
@@ -20,16 +12,18 @@ module.exports = {
       type: 'number',
       description: 'the amount to add or substract from the data',
       required: true
+    },
+    rollback: {
+      type: 'number',
+      defaultsTo: 0
     }
   },
-
-
   exits: {
     success: {
       outputFriendlyName: 'Operation Success',
       outputDescription: 'Was Operation Successful',
+      responseType: 'ref'
     },
-
     recordNotFount: {
       description: 'The data provided is not valid to operate a transaction'
     },
@@ -41,8 +35,6 @@ module.exports = {
       responseType: 'notFound'
     }
   },
-
-
   fn: async function (inputs, exits) {
     let previous = await inputs.model.findOne(inputs.id);
     let data = Object.assign({}, previous);
@@ -52,15 +44,10 @@ module.exports = {
     if (typeof inputs.amount !== 'number' || inputs.amount <= 0){
       throw 'invalidAmount';
     }
-    data.balance -= inputs.amount;
+    data.balance += inputs.rollback - inputs.amount;
     if (data.balance < 0){
       throw 'insufficientFunds';
     }
-    // await sails.helpers.updateAndPublish.with({
-    //   previous,
-    //   data,
-    //   model: inputs.model
-    // });
     return exits.success({
       previous,
       data,

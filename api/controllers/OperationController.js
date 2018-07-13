@@ -4,11 +4,7 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-function throwInsufficientFunds(){
-  let error = new Error('accountInsufficientFunds');
-  error.code = 'accountInsufficientFunds';
-  return error;
-}
+
 module.exports = {
 
   async create(req, res) {
@@ -24,14 +20,14 @@ module.exports = {
         model: Account,
         id: data.account,
         amount: data.amount
-      }).intercept('insufficientFunds', throwInsufficientFunds);
+      }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('account'));
       let budOperation = await sails.helpers.validateOperation.with({
         model: Budget,
         id: data.budget,
         amount: data.amount
-      }).intercept('insufficientFunds', throwInsufficientFunds);
-      sails.helpers.updateAndPublish(operation);
-      sails.helpers.updateAndPublish(budOperation);
+      }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('budget'));
+      await sails.helpers.updateAndPublish.with(operation);
+      await sails.helpers.updateAndPublish.with(budOperation);
     }
     let newInstance = await sails.helpers.createAndPublish.with({
       model: Operation,
@@ -58,6 +54,9 @@ module.exports = {
     let updateAccount = false;
     let updateBudget = false;
     try {
+      if (data.destination !== data.destination){
+        return res.badRequest('cannotInterchangeOperationAndTransfer');
+      }
       if (  (data.isDeposit !== previous.isDeposit) ||
             (data.amount !== previous.amount) ||
             (data.account !== previous.account))  {
@@ -67,7 +66,7 @@ module.exports = {
             model: Account,
             id: previous.account,
             amount: data.amount
-          }).intercept('insufficientFunds', throwInsufficientFunds);
+          }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('account'));
           if (data.isDeposit){
             addition.id = data.id;
           } else {
@@ -77,8 +76,9 @@ module.exports = {
           substraction = await sails.helpers.validateOperation.with({
             model: Account,
             id: data.account,
-            amount: data.amount
-          }).intercept('insufficientFunds', throwInsufficientFunds);
+            amount: data.amount,
+            rollback: previous.amount
+          }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('account'));
           if (!data.isDeposit){
             addition.id = data.id;
           } else {
@@ -86,13 +86,13 @@ module.exports = {
           }
         }
       }
-      if (!data.isDeposit && data.budget !== previous.budget){
+      if (!data.isDeposit || data.budget !== previous.budget){
         updateBudget = true;
         budSubstraction = await sails.helpers.validateOperation.with({
           model: Budget,
           id: previous.budget,
           amount: data.amount
-        }).intercept('insufficientFunds', throwInsufficientFunds);
+        }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('budget'));
       }
       if (updateAccount){
         await sails.helpers.updateAndPublish.with(substraction);
@@ -134,7 +134,7 @@ module.exports = {
       };
       if (previous.isDeposit){
         let substraction = await sails.helpers.validateOperation.with(accountData)
-          .intercept('insufficientFunds', throwInsufficientFunds);
+          .intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('account'));
         await sails.helpers.updateAndPublish.with(substraction);
       } else {
         await sails.helpers.performIncome.with(accountData);
@@ -142,7 +142,7 @@ module.exports = {
           await sails.helpers.performIncome.with({
             model: Budget,
             id: previous.budget,
-            amount: previous.ammount
+            amount: previous.amount
           });
         }
       }
