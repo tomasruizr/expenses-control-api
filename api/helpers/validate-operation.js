@@ -56,11 +56,15 @@ module.exports = {
     if (data.balance < 0){
       throw 'insufficientFunds';
     }
-    await sails.helpers.updateAndPublish.with({
+    // await sails.helpers.updateAndPublish.with({
+    //   previous,
+    //   data,
+    //   model: inputs.model
+    // });
+    return exits.success({
       previous,
       data,
       model: inputs.model
     });
-    return exits.success(true);
   }
 };
