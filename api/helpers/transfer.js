@@ -62,19 +62,19 @@ module.exports = {
     }
     let origin = Object.assign({}, previousOrigin);
     let destination = Object.assign({}, previousDestination);
-    previousOrigin.balance -= inputs.amount;
+    origin.balance -= inputs.amount;
     if (previousOrigin.balance < 0){
       throw 'insufficientFunds';
     }
-    previousDestination.balance += inputs.amount;
+    destination.balance += inputs.amount;
     await sails.helpers.updateAndPublish.with({
-      previousOrigin,
-      origin,
+      previous:previousOrigin,
+      data:origin,
       model: inputs.model
     });
     await sails.helpers.updateAndPublish.with({
-      previousDestination,
-      destination,
+      previous: previousDestination,
+      data: destination,
       model: inputs.model
     });
     return exits.success(true);

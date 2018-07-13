@@ -49,7 +49,7 @@ module.exports = {
     if (!data){
       throw 'recordNotFount';
     }
-    if (typeof inputs.amount !== 'number' || inputs.amount <= 0){
+    if (typeof inputs.amount !== 'number'){
       throw 'invalidAmount';
     }
     data.balance -= inputs.amount;

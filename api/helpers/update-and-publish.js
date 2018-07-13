@@ -30,12 +30,12 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    await inputs.model.update(inputs.id || inputs.data.id, inputs.data);
+    await inputs.model.update(inputs.data.id, inputs.data);
     inputs.model.publish([inputs.id || inputs.data.id], {
       verb: 'updated',
       data: inputs.data,
       previous: inputs.previous
-    });
+    }, inputs.req );
     return exits.success();
 
   }
