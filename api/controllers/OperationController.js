@@ -4,8 +4,18 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-
-async function performOperation(data, previous = {amount:0}){
+async function performIncome(data, previous = {amount:0}){
+  await sails.helpers.performExpense.with({
+    model: Account,
+    id: data.account,
+    amount: previous.amount - data.amount
+  }).intercept('insufficientFunds', () => {
+    let error = new Error('accountInsufficientFunds');
+    error.code = 'accountInsufficientFunds';
+    return error;
+  });
+}
+async function performExpense(data, previous = {amount:0}){
   await sails.helpers.performExpense.with({
     model: Account,
     id: data.account,
@@ -37,14 +47,43 @@ module.exports = {
 
   async create(req, res) {
     let data = await sails.helpers.getReqRecord(Operation, req);
-
-    await performOperation(data);
+    if (data.isDeposit){
+      await performIncome(data);
+    } else {
+      await performExpense(data);
+    }
     let newInstance = await sails.helpers.createAndPublish.with({
       model: Operation,
       req,
       data
     });
     res.ok(newInstance);
+  },
+
+  async update(req, res){
+    let data = await sails.helpers.getReqRecord(Operation, req);
+    let previous = await Operation.findOne(data.id);
+    if (data.account !== previous.account){
+
+    }
+
+    try {
+      if (data.isDeposit){
+        await performIncome(data, previous);
+      } else {
+        await performExpense(data, previous);
+      }
+    } catch (err){
+      err.data = previous;
+      throw err;
+    }
+    await sails.helpers.updateAndPublish.with({
+      model: Operation,
+      previous,
+      data,
+      req
+    });
+    res.ok(data);
   },
 
   async destroy(req, res){
@@ -64,32 +103,8 @@ module.exports = {
       req,
     });
     res.ok(previous);
-  },
-
-
-  async update(req, res){
-    let data = await sails.helpers.getReqRecord(Operation, req);
-
-    let previous = await Operation.findOne(data.id);
-    // await sails.helpers.rollbackAccountOperation(data.id);
-    // if (previous.budget) {
-    //   await sails.helpers.rollbackBudgetOperation(data.id);
-    // }
-    try {
-      await performOperation(data, previous);
-    } catch (err){
-      err.data = previous;
-      // Operation.publish([data.id], {verb: 'updated', data: previous});
-      throw err;
-    }
-    await sails.helpers.updateAndPublish.with({
-      model: Operation,
-      previous,
-      data,
-      req
-    });
-    res.ok(data);
   }
+
 };
 
 
