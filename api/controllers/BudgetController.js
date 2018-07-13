@@ -9,27 +9,13 @@ module.exports = {
 
   async makeTransfer(req, res){
     let data = req.body;
-    await sails.helpers.BudgetExpense.with({
-      account: data.origin,
-      amount: data.amount,
-      isDeposit: false
+    await sails.helpers.transfer.with({
+      model: Budget,
+      origin: data.origin,
+      destination: data.destination,
+      amount: data.amount
     });
-    await sails.helpers.performIncome.with({
-      account: data.destination,
-      amount: data.amount,
-      isDeposit: true
-    });
-    let newInstance = await sails.helpers.createAndPublish.with({
-      model: Operation,
-      req,
-      data: {
-        account: data.origin,
-        destination: data.destination,
-        amount: data.amount,
-        description: data.description
-      }
-    });
-    res.ok(newInstance);
+    res.ok();
   },
 
 };
