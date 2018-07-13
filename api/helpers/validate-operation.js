@@ -16,6 +16,10 @@ module.exports = {
     rollback: {
       type: 'number',
       defaultsTo: 0
+    },
+    substraction:{
+      type: 'boolean',
+      defaultsTo: true
     }
   },
   exits: {
@@ -44,7 +48,11 @@ module.exports = {
     if (typeof inputs.amount !== 'number' || inputs.amount <= 0){
       throw 'invalidAmount';
     }
-    data.balance += inputs.rollback - inputs.amount;
+    if (inputs.substraction){
+      data.balance += inputs.rollback - inputs.amount;
+    } else {
+      data.balance += inputs.amount;
+    }
     if (data.balance < 0){
       throw 'insufficientFunds';
     }

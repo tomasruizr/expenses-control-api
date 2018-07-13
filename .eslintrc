@@ -1,22 +1,4 @@
 {
-  //   ╔═╗╔═╗╦  ╦╔╗╔╔╦╗┬─┐┌─┐
-  //   ║╣ ╚═╗║  ║║║║ ║ ├┬┘│
-  //  o╚═╝╚═╝╩═╝╩╝╚╝ ╩ ┴└─└─┘
-  // A set of basic code conventions (similar to a .jshintrc file) designed to
-  // encourage quality and consistency across your Sails app's code base.
-  // These rules are checked against automatically any time you run `npm test`.
-  // 
-  // > Note: If you're using mocha, you'll want to add an extra override file to your
-  // > `test/` folder so that eslint will tolerate mocha-specific globals like `before`
-  // > and `describe`.
-  // Designed for ESLint v4.
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // For more information about any of the rules below, check out the relevant
-  // reference page on eslint.org.  For example, to get details on "no-sequences",
-  // you would visit `http://eslint.org/docs/rules/no-sequences`.  If you're unsure
-  // or could use some advice, come by https://sailsjs.com/support.
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   "env": {
     "node": true
   },
@@ -71,7 +53,37 @@
     "quotes":                       ["warn", "single", {"avoidEscape":false, "allowTemplateLiterals":true}],
     "semi":                         ["error", "always"],
     "semi-spacing":                 ["warn", {"before":false, "after":true}],
-    "semi-style":                   ["warn", "last"]
+    "semi-style":                   ["warn", "last"],
+
+    "no-console": 1,
+    "no-debugger":"off",
+    "quote-props": ["error", "consistent-as-needed"],
+    "prefer-template": "error",
+
+    "no-multi-spaces": ["error", { "ignoreEOLComments": false }],
+    "space-in-parens": ["error", "always", {
+      "exceptions": ["{}", "[]", "empty", "()"]
+    }],
+    "object-curly-spacing": ["error", "always", {
+      "arraysInObjects": false,
+      "objectsInObjects": false
+    }],
+    "array-bracket-spacing": ["error", "always", {
+      "singleValue": false ,
+      "objectsInArrays": false,
+      "arraysInArrays": false
+    }],
+    "space-unary-ops": "error",
+    "block-spacing": "error",
+    "space-infix-ops": "error",
+    "lines-between-class-members": ["error", "always"],
+    "no-multiple-empty-lines": "error",
+    "padded-blocks": ["error", { "blocks": "never", "classes": "always" }],
+
+    "no-param-reassign":"off",
+    "prefer-object-spread" : "2",
+    "require-yield": "error",
+    "no-extra-boolean-cast":"off"
   }
 
 }

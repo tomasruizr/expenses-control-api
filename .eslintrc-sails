@@ -1,0 +1,16 @@
+{
+	"globals": {
+		"sails": true,
+		"create-and-publish": true,
+		"destroy-and-publish": true,
+		"get-req-record": true,
+		"perform-income": true,
+		"rollback-account-operation": true,
+		"rollback-account-transfer": true,
+		"rollback-budget-operation": true,
+		"throw-insufficient-funds": true,
+		"transfer": true,
+		"update-and-publish": true,
+		"validate-operation": true
+	}
+}
