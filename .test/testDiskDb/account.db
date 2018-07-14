@@ -1,0 +1,11 @@
+{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531546209938,"updatedAt":1531546209938,"isActive":false,"_id":1}
+{"id":2,"name":"account 2","balance":1000,"createdAt":1531546209942,"updatedAt":1531546209942,"isActive":false,"_id":2}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531546209938,"updatedAt":1531546209951,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":700,"createdAt":1531546209938,"updatedAt":1531546209951,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531546209938,"updatedAt":1531546209994,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":700,"createdAt":1531546209938,"updatedAt":1531546209994,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531546209938,"updatedAt":1531546210007,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531546209938,"updatedAt":1531546210015,"isActive":false,"_id":1}

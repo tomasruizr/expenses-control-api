@@ -27,31 +27,28 @@ module.exports = {
   },
 
 
-  fn: async function (inputs, exits) {
-
-    await inputs.model.create(inputs.data).meta({fetch: true}).exec(function created (err, newInstance) {
-
-      if (err) {
-        switch (err.name) {
+  fn: async function ( inputs, exits ) {
+    await inputs.model.create( inputs.data ).meta({ fetch: true }).exec( function created ( err, newInstance ) {
+      if ( err ) {
+        switch ( err.name ) {
           case 'AdapterError':
-            switch (err.code) {
-              case 'E_UNIQUE': return res.badRequest(err);
-              default: return res.serverError(err);
+            switch ( err.code ) {
+              case 'E_UNIQUE': return res.badRequest( err );
+              default: return res.serverError( err );
             }//•
-          case 'UsageError': return res.badRequest('Usage Error');
-          default: return res.serverError(err);
+          case 'UsageError': return res.badRequest( 'Usage Error' );
+          default: return res.serverError( err );
         }
       }
 
-      if (inputs.req._sails.hooks.pubsub) {
-        if (inputs.req.isSocket) {
-          inputs.model.subscribe(inputs.req, [newInstance.id]);
-          inputs.model._introduce(newInstance);
+      if ( inputs.req._sails.hooks.pubsub ) {
+        if ( inputs.req.isSocket ) {
+          inputs.model.subscribe( inputs.req, [newInstance.id]);
+          inputs.model._introduce( newInstance );
         }
-        inputs.model._publishCreate(newInstance, !inputs.req.options.mirror && inputs.req);
+        inputs.model._publishCreate( newInstance, !inputs.req.options.mirror && inputs.req );
       }
-      return exits.success(newInstance);
-
+      return exits.success( newInstance );
     });
   }
 };

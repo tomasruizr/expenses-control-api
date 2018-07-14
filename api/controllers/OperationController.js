@@ -7,9 +7,9 @@
 
 module.exports = {
 
-  async create(req, res) {
-    let data = await sails.helpers.getReqRecord(Operation, req);
-    if (data.isDeposit){
+  async create( req, res ) {
+    let data = await sails.helpers.getReqRecord( Operation, req );
+    if ( data.isDeposit ){
       await sails.helpers.performIncome.with({
         model: Account,
         id: data.account,
@@ -20,30 +20,37 @@ module.exports = {
         model: Account,
         id: data.account,
         amount: data.amount
-      }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('account'));
+      }).intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( 'account' ));
       let budOperation = await sails.helpers.validateOperation.with({
         model: Budget,
         id: data.budget,
         amount: data.amount
-      }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('budget'));
-      await sails.helpers.updateAndPublish.with(operation);
-      await sails.helpers.updateAndPublish.with(budOperation);
+      }).intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( 'budget' ));
+      await sails.helpers.updateAndPublish.with( operation );
+      await sails.helpers.updateAndPublish.with( budOperation );
     }
     let newInstance = await sails.helpers.createAndPublish.with({
       model: Operation,
       req,
       data
     });
-    res.ok(newInstance);
+    res.ok( newInstance );
   },
 
-  async update(req, res){
-    let data = await sails.helpers.getReqRecord(Operation, req);
-    let previous = await Operation.findOne(data.id);
+  async update( req, res ){
+    let data = await sails.helpers.getReqRecord( Operation, req );
+    let previous = await Operation.findOne( data.id );
     let changes = [];
-    Object.getOwnPropertyNames(data).forEach((prop) => {
-      if (data[prop] !== previous[prop]) {changes.push(prop);}
+    Object.getOwnPropertyNames( data ).forEach(( prop ) => {
+      if ( prop === 'id' ) { return false; }
+      if ( data[prop] !== previous[prop]) { changes.push( prop ); }
     });
+    //TODO: me quede aqui
+    if ( changes.includes( 'isDeposit' )){
+      let error = new Error( 'cannotUpdateIsDeposit' );
+      error.code = 'cannotUpdateIsDeposit';
+      return res.badRequest( error );
+    }
     let operation;
     let newSubstraction;
     let budSubstraction;
@@ -52,55 +59,57 @@ module.exports = {
       amount: data.amount,
       id : data.budget
     };
-    // if only amount changed
-    if (changes.includes('amount') && !changes.includes('isDeposit') && !changes.includes('account')){
-      operation = await sails.helpers.validateOperation.with({
-        model: Account,
-        id: data.account,
-        amount: data.amount,
-        rollback: previous.amount
-      }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('account'));
+    try{
+      // if only amount changed
+      if ( changes.includes( 'amount' ) && !changes.includes( 'account' )){
+        operation = await sails.helpers.validateOperation.with({
+          model: Account,
+          id: data.account || previous.account,
+          amount: data.amount,
+          rollback: previous.amount
+        }).intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( 'account' ));
+      }
+      // if account or isDeposit Changed
+      if ( changes.includes( 'isDeposit' ) && !changes.includes( 'account' )){
+        operation = await sails.helpers.validateOperation.with({
+          model: Account,
+          id: previous.account,
+          amount: changes.includes( 'isDeposit' ) ? data.amount * 2 : data.amount,
+          substraction: changes.includes( 'isDeposit' ) && !data.isDeposit
+        }).intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( 'account' ));
+      }
+      if ( changes.includes( 'account' )){
+        operation = await sails.helpers.validateOperation.with({
+          model: Account,
+          id: previous.account,
+          amount: previous.amount,
+          substraction: previous.isDeposit
+        }).intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( 'account' ));
+        operation = await sails.helpers.validateOperation.with({
+          model: Account,
+          id: previous.account,
+          amount: previous.amount,
+          substraction: previous.isDeposit
+        }).intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( 'account' ));
+      }
+      await sails.helpers.updateAndPublish.with( operation );
+      let response = await sails.helpers.updateAndPublish.with({
+        model: Operation,
+        previous,
+        data,
+        req
+      });
+      res.ok( response );
+    } catch ( err ){
+      return res.badRequest( err );
     }
-    // if account or isDeposit Changed
-    if (changes.includes('isDeposit')  && !changes.includes('account')){
-      operation = await sails.helpers.validateOperation.with({
-        model: Account,
-        id: previous.account,
-        amount: changes.includes('isDeposit') ? data.amount * 2 : data.amount,
-        substraction: changes.includes('isDeposit') && !data.isDeposit
-      }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('account'));
-    }
-    if (changes.includes('account')){
-      operation = await sails.helpers.validateOperation.with({
-        model: Account,
-        id: previous.account,
-        amount: previous.amount,
-        substraction: previous.isDeposit
-      }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('account'));
-      operation = await sails.helpers.validateOperation.with({
-        model: Account,
-        id: previous.account,
-        amount: previous.amount,
-        substraction: previous.isDeposit
-      }).intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('account'));
-    }
-    res.ok(data);
 
-    // await sails.helpers.updateAndPublish.with(substraction);
     //     await sails.helpers.performIncome.with(addition);
     // if isDeposit Changed || if account changed
     // rollback operation and redo
     // rollback operation and redo.
     // if buSbudget Changed
     // rollback budget and redo
-
-
-
-
-
-
-
-
 
 
     // let substraction;
@@ -179,10 +188,10 @@ module.exports = {
     // res.ok(data);
   },
 
-  async destroy(req, res){
-    let data = await sails.helpers.getReqRecord(Operation, req);
-    let previous = await Operation.findOne(data.id);
-    if (previous.destination){
+  async destroy( req, res ){
+    let data = await sails.helpers.getReqRecord( Operation, req );
+    let previous = await Operation.findOne( data.id );
+    if ( previous.destination ){
       await sails.helpers.transfer.with({
         model: Account,
         origin: previous.destination,
@@ -195,13 +204,13 @@ module.exports = {
         id: previous.account,
         amount: previous.amount
       };
-      if (previous.isDeposit){
-        let substraction = await sails.helpers.validateOperation.with(accountData)
-          .intercept('insufficientFunds', () => sails.helpers.throwInsufficientFunds('account'));
-        await sails.helpers.updateAndPublish.with(substraction);
+      if ( previous.isDeposit ){
+        let substraction = await sails.helpers.validateOperation.with( accountData )
+          .intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( 'account' ));
+        await sails.helpers.updateAndPublish.with( substraction );
       } else {
-        await sails.helpers.performIncome.with(accountData);
-        if (previous.budget) {
+        await sails.helpers.performIncome.with( accountData );
+        if ( previous.budget ) {
           await sails.helpers.performIncome.with({
             model: Budget,
             id: previous.budget,
@@ -215,7 +224,7 @@ module.exports = {
       id: data.id,
       req,
     });
-    res.ok(previous);
+    res.ok( previous );
   }
 
 };

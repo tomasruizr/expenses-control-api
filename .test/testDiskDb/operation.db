@@ -1,0 +1,12 @@
+{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
+{"date":{"$$date":1531546208390},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":0,"id":1,"createdAt":1531546209954,"updatedAt":1531546209954,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531546208390},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":300,"id":1,"createdAt":1531546209954,"updatedAt":1531546209985,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531546208390},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":0,"id":1,"createdAt":1531546209954,"updatedAt":1531546209954,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531546208390},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":300,"id":1,"createdAt":1531546209954,"updatedAt":1531546210004,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531546208390},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":0,"id":1,"createdAt":1531546209954,"updatedAt":1531546209954,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531546208390},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":0,"id":1,"createdAt":1531546209954,"updatedAt":1531546209954,"destination":0,"_id":1}

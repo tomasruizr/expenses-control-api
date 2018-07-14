@@ -1,0 +1,14 @@
+[
+  {
+    "id":1,
+    "name": "budget 1",
+    "amount": 1000,
+    "balance": 1000
+  },
+  {
+    "id":2,
+    "name": "budget 2",
+    "amount": 1000,
+    "balance": 1000
+  }
+]

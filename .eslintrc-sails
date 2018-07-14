@@ -1,4 +1,4 @@
-{{
+{
 	"globals": {
 		"async": true,
 		"_": true,

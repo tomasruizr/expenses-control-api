@@ -1,0 +1,12 @@
+[
+  {
+    "id":1,
+    "name": "category 1",
+    "isDeposit": false
+  },
+  {
+    "id":2,
+    "name": "category 2",
+    "isDeposit": true
+  }
+]

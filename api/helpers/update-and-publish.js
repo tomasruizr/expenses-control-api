@@ -28,16 +28,14 @@ module.exports = {
   },
 
 
-  fn: async function (inputs, exits) {
-
-    await inputs.model.update(inputs.data.id, inputs.data);
+  fn: async function ( inputs, exits ) {
+    let response = await inputs.model.update( inputs.data.id, inputs.data ).fetch();
     inputs.model.publish([inputs.data.id], {
       verb: 'updated',
       data: inputs.data,
       previous: inputs.previous
     }, inputs.req );
-    return exits.success();
-
+    return exits.success( response );
   }
 
 
