@@ -1,6 +1,27 @@
-{
+{{
 	"globals": {
-		"sails": true,
+		"async": true,
+		"_": true,
+
+// Controllers
+		"AccountController": true,
+		"BudgetController": true,
+		"CategoryController": true,
+		"GoalController": true,
+		"OperationController": true,
+		"TestController": true,
+		"UserController": true,
+
+// Models
+		"Account": true,
+		"Budget": true,
+		"Category": true,
+		"Goal": true,
+		"Operation": true,
+		"Test": true,
+		"User": true,
+
+// Helpers
 		"create-and-publish": true,
 		"destroy-and-publish": true,
 		"get-req-record": true,
