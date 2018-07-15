@@ -147,7 +147,7 @@ describe( 'Operation Controller', () => {
             assert.equal( res.body[0].isDeposit, false );
 
             Operation.findOne( 1 ).then(( op ) => {
-              assert.equal( res.body[0].id, 1 );
+              assert.equal( op.id, 1 );
               assert.equal( op.account, 1 );
               assert.equal( op.budget, 1 );
               assert.equal( op.category, 1 );
@@ -379,7 +379,7 @@ describe( 'Operation Controller', () => {
     });
   });
 
-  describe.only( 'destroy()', () => {
+  describe( 'destroy()', () => {
     beforeEach( async () => {
       await Operation.destroy( 1 );
       await Account.update( 1, { balance: 1000 });
@@ -431,6 +431,7 @@ describe( 'Operation Controller', () => {
       operation = Object.assign ({}, operationOrig );
       operation.amount = 500;
       operation.id = 1;
+      delete operation.budget;
       operation.isDeposit = true;
       supertest( sails.hooks.http.app )
         .post( '/operation' )
@@ -453,6 +454,7 @@ describe( 'Operation Controller', () => {
       operation = Object.assign ({}, operationOrig );
       operation.amount = 500;
       operation.id = 1;
+      delete operation.budget;
       operation.isDeposit = true;
       supertest( sails.hooks.http.app )
         .post( '/operation' )
@@ -471,6 +473,104 @@ describe( 'Operation Controller', () => {
           });
         });
     });
-    it( 'throw insufficient funds if deleting deposit from account' );
+    it( 'throw insufficient funds if deleting deposit from account', ( done ) => {
+      operation = Object.assign ({}, operationOrig );
+      operation.amount = 500;
+      operation.id = 1;
+      delete operation.budget;
+      operation.isDeposit = true;
+      supertest( sails.hooks.http.app )
+        .post( '/operation' )
+        .send( operation )
+        .end(() => {
+          Account.update( 1, { balance: 400 })
+          .then(() => {
+            supertest( sails.hooks.http.app )
+            .delete( '/operation/1' )
+            .send()
+            .expect( 400 )
+            .end(( err, res ) => {
+              assert.notExists( err );
+              assert.equal( res.body.code, 'accountInsufficientFunds' );
+              Account.findOne( 1 ).then(( account ) => {
+                assert.equal( account.balance, 400 );
+                done();
+              }).catch( err=>done( err ));
+            });
+          });
+        });
+    });
+    it( 'throws error if trying to destroy transfer', ( done ) => {
+      supertest( sails.hooks.http.app )
+        .post( '/operation/makeTransfer' )
+        .send({
+          type: 'Account',
+          origin:1,
+          destination:2,
+          amount: 200
+        })
+        .end(( err, res ) => {
+          assert.notExists( err );
+          supertest( sails.hooks.http.app )
+          .delete( `/operation/${res.body.id}` )
+          .send()
+          .expect( 400 )
+          .end(( err, res ) => {
+            assert.notExists( err );
+            assert.equal( res.body.code, 'cannotDeleteTransfer' );
+            done();
+          });
+        });
+    });
+  });
+  describe( 'transfer()', () => {
+    beforeEach( async() => {
+      await Account.update( 1, { balance: 1000 });
+      await Account.update( 2, { balance: 500 });
+      await Budget.update( 1, { balance: 1000 });
+      await Budget.update( 2, { balance: 500 });
+    });
+    it( 'transfer the amount between accounts', ( done ) => {
+      supertest( sails.hooks.http.app )
+        .post( '/operation/makeTransfer' )
+        .send({
+          type: 'Account',
+          origin:1,
+          destination:2,
+          amount: 200
+        })
+        .end(( err, res ) => {
+          assert.notExists( err );
+          Account.findOne( 1 ).then(( account ) => {
+            assert.equal( account.balance, 800 );
+            Account.findOne( 2 ).then(( account ) => {
+              assert.equal( account.balance, 700 );
+              done();
+            }).catch( err=>done( err ));
+          }).catch( err=>done( err ));
+        });
+    });
+    it( 'throws if origin account has insufficient funds', ( done ) => {
+      supertest( sails.hooks.http.app )
+        .post( '/operation/makeTransfer' )
+        .send({
+          type: 'Account',
+          origin:1,
+          destination:2,
+          amount: 2000
+        })
+        .expect( 400 )
+        .end(( err, res ) => {
+          assert.notExists( err );
+          assert.equal( res.body.code, 'accountInsufficientFunds' );
+          Account.findOne( 1 ).then(( account ) => {
+            assert.equal( account.balance, 1000 );
+            Account.findOne( 2 ).then(( account ) => {
+              assert.equal( account.balance, 500 );
+              done();
+            }).catch( err=>done( err ));
+          }).catch( err=>done( err ));
+        });
+    });
   });
 });

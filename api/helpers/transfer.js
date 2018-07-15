@@ -38,21 +38,28 @@ module.exports = {
   },
 
 
-  fn: async function (inputs, exits) {
-    if (inputs.origin === inputs.destination){
+  fn: async function ( inputs, exits ) {
+    if ( inputs.origin === inputs.destination ){
       throw 'originAndDestinationMustDiffer';
     }
     let substraction = await sails.helpers.validateOperation.with({
       model: inputs.model,
       id: inputs.origin,
       amount: inputs.amount
-    }).intercept('insufficientFunds', sails.helpers.throwInsufficientFunds(inputs.model));
-    await sails.helpers.updateAndPublish.with(substraction);
-    await sails.helpers.performIncome.with({
+    }).intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( inputs.model.identity ));
+    let addition = await sails.helpers.validateOperation.with({
       model: inputs.model,
       id: inputs.destination,
-      amount: inputs.amount
+      amount: inputs.amount,
+      substraction: false
     });
-    return exits.success(true);
+    await sails.helpers.updateAndPublish.with( substraction );
+    await sails.helpers.updateAndPublish.with( addition );
+    // await sails.helpers.performIncome.with({
+    //   model: inputs.model,
+    //   id: inputs.destination,
+    //   amount: inputs.amount
+    // });
+    return exits.success( true );
   }
 };

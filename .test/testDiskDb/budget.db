@@ -1,15 +1,52 @@
 {"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
-{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274175,"anualAmount":0,"isActive":true,"_id":1}
-{"id":2,"name":"budget 2","amount":500,"balance":500,"createdAt":1531616274175,"updatedAt":1531616274175,"anualAmount":0,"isActive":true,"_id":2}
-{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274185,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983528,"anualAmount":0,"isActive":true,"_id":1}
+{"id":2,"name":"budget 2","amount":500,"balance":500,"createdAt":1531627983529,"updatedAt":1531627983529,"anualAmount":0,"isActive":true,"_id":2}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983531,"anualAmount":0,"isActive":true,"_id":1}
+{"id":2,"name":"budget 2","amount":500,"balance":500,"createdAt":1531627983529,"updatedAt":1531627983537,"anualAmount":0,"isActive":true,"_id":2}
 {"$$deleted":true,"_id":1}
-{"id":1,"name":"budget 1","amount":1000,"balance":0,"createdAt":1531616274175,"updatedAt":1531616274185,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":800,"createdAt":1531627983528,"updatedAt":1531627983531,"anualAmount":0,"isActive":true,"_id":1}
+{"$$deleted":true,"_id":2}
+{"id":2,"name":"budget 2","amount":500,"balance":700,"createdAt":1531627983529,"updatedAt":1531627983537,"anualAmount":0,"isActive":true,"_id":2}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983597,"anualAmount":0,"isActive":true,"_id":1}
+{"id":2,"name":"budget 2","amount":500,"balance":500,"createdAt":1531627983529,"updatedAt":1531627983597,"anualAmount":0,"isActive":true,"_id":2}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983610,"anualAmount":0,"isActive":true,"_id":1}
 {"$$deleted":true,"_id":1}
-{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274185,"anualAmount":0,"isActive":true,"_id":1}
-{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274239,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":800,"createdAt":1531627983528,"updatedAt":1531627983610,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983621,"anualAmount":0,"isActive":true,"_id":1}
 {"$$deleted":true,"_id":1}
-{"id":1,"name":"budget 1","amount":1000,"balance":500,"createdAt":1531616274175,"updatedAt":1531616274239,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":800,"createdAt":1531627983528,"updatedAt":1531627983621,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983628,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983633,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983638,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983641,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983645,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983675,"anualAmount":0,"isActive":true,"_id":1}
+{"id":2,"name":"budget 2","amount":500,"balance":500,"createdAt":1531627983529,"updatedAt":1531627983675,"anualAmount":0,"isActive":true,"_id":2}
 {"$$deleted":true,"_id":1}
-{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274239,"anualAmount":0,"isActive":true,"_id":1}
-{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274255,"anualAmount":0,"isActive":true,"_id":1}
-{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274264,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1300,"createdAt":1531627983528,"updatedAt":1531627983675,"anualAmount":0,"isActive":true,"_id":1}
+{"$$deleted":true,"_id":2}
+{"id":2,"name":"budget 2","amount":500,"balance":200,"createdAt":1531627983529,"updatedAt":1531627983675,"anualAmount":0,"isActive":true,"_id":2}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983685,"anualAmount":0,"isActive":true,"_id":1}
+{"id":2,"name":"budget 2","amount":500,"balance":500,"createdAt":1531627983529,"updatedAt":1531627983686,"anualAmount":0,"isActive":true,"_id":2}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983694,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983705,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983719,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983726,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983732,"anualAmount":0,"isActive":true,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":0,"createdAt":1531627983528,"updatedAt":1531627983732,"anualAmount":0,"isActive":true,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983732,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983746,"anualAmount":0,"isActive":true,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":500,"createdAt":1531627983528,"updatedAt":1531627983746,"anualAmount":0,"isActive":true,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983746,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983761,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983772,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983783,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983793,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983805,"anualAmount":0,"isActive":true,"_id":1}
+{"id":2,"name":"budget 2","amount":500,"balance":500,"createdAt":1531627983529,"updatedAt":1531627983806,"anualAmount":0,"isActive":true,"_id":2}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531627983528,"updatedAt":1531627983816,"anualAmount":0,"isActive":true,"_id":1}
+{"id":2,"name":"budget 2","amount":500,"balance":500,"createdAt":1531627983529,"updatedAt":1531627983817,"anualAmount":0,"isActive":true,"_id":2}

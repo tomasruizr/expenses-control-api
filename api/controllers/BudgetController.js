@@ -6,8 +6,7 @@
  */
 
 module.exports = {
-
-  async makeTransfer(req, res){
+  async makeTransfer( req, res ){
     let data = req.body;
     await sails.helpers.transfer.with({
       model: Budget,

@@ -1,5 +1,45 @@
 {"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
-{"date":"2018-07-15T00:57:52.477Z","isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":1000,"id":1,"createdAt":1531616274217,"updatedAt":1531616274217,"destination":0,"_id":1}
+{"date":"2018-07-15T04:13:01.789Z","isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":200,"createdAt":1531627983617,"updatedAt":1531627983617,"id":14,"destination":0,"_id":14}
+{"date":"2018-07-15T04:13:01.789Z","isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":200,"createdAt":1531627983626,"updatedAt":1531627983626,"id":15,"destination":0,"_id":15}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":0,"id":1,"createdAt":1531627983648,"updatedAt":1531627983648,"destination":0,"_id":1}
 {"$$deleted":true,"_id":1}
-{"date":"2018-07-15T00:57:52.477Z","isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":500,"id":1,"createdAt":1531616274245,"updatedAt":1531616274245,"destination":0,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":300,"id":1,"createdAt":1531627983648,"updatedAt":1531627983653,"destination":0,"_id":1}
 {"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":0,"id":1,"createdAt":1531627983657,"updatedAt":1531627983657,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":300,"id":1,"createdAt":1531627983657,"updatedAt":1531627983661,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":0,"id":1,"createdAt":1531627983664,"updatedAt":1531627983664,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":0,"id":1,"createdAt":1531627983669,"updatedAt":1531627983669,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":300,"id":1,"createdAt":1531627983676,"updatedAt":1531627983676,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":2,"account":1,"category":1,"description":"some description","amount":300,"id":1,"createdAt":1531627983676,"updatedAt":1531627983682,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":600,"id":1,"createdAt":1531627983687,"updatedAt":1531627983687,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":200,"id":1,"createdAt":1531627983695,"updatedAt":1531627983695,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":2,"category":1,"description":"some description","amount":200,"id":1,"createdAt":1531627983695,"updatedAt":1531627983701,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":true,"budget":1,"account":1,"category":1,"description":"some description","amount":200,"id":1,"createdAt":1531627983705,"updatedAt":1531627983705,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":true,"budget":1,"account":2,"category":1,"description":"some description","amount":200,"id":1,"createdAt":1531627983705,"updatedAt":1531627983713,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":600,"id":1,"createdAt":1531627983719,"updatedAt":1531627983719,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":{"$$date":1531627981789},"isDeposit":true,"budget":1,"account":2,"category":1,"description":"some description","amount":600,"id":1,"createdAt":1531627983726,"updatedAt":1531627983726,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":"2018-07-15T04:13:01.789Z","isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":1000,"id":1,"createdAt":1531627983737,"updatedAt":1531627983737,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":"2018-07-15T04:13:01.789Z","isDeposit":false,"budget":1,"account":1,"category":1,"description":"some description","amount":500,"id":1,"createdAt":1531627983751,"updatedAt":1531627983751,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":"2018-07-15T04:13:01.789Z","isDeposit":true,"account":1,"category":1,"description":"some description","amount":500,"id":1,"createdAt":1531627983765,"updatedAt":1531627983765,"budget":0,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":"2018-07-15T04:13:01.789Z","isDeposit":true,"account":1,"category":1,"description":"some description","amount":500,"id":1,"createdAt":1531627983775,"updatedAt":1531627983775,"budget":0,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"date":"2018-07-15T04:13:01.789Z","isDeposit":true,"account":1,"category":1,"description":"some description","amount":500,"id":1,"createdAt":1531627983786,"updatedAt":1531627983786,"budget":0,"destination":0,"_id":1}
+{"$$deleted":true,"_id":1}
+{"account":1,"destination":2,"amount":200,"createdAt":1531627983800,"updatedAt":1531627983800,"id":16,"description":"","category":0,"budget":0,"isDeposit":false,"date":null,"_id":16}
+{"account":1,"destination":2,"amount":200,"createdAt":1531627983813,"updatedAt":1531627983813,"id":17,"description":"","category":0,"budget":0,"isDeposit":false,"date":null,"_id":17}

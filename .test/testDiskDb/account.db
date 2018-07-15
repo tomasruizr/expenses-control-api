@@ -1,15 +1,76 @@
 {"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274170,"isActive":false,"_id":1}
-{"id":2,"name":"account 2","balance":500,"createdAt":1531616274174,"updatedAt":1531616274174,"isActive":false,"_id":2}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274183,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983525,"isActive":false,"_id":1}
+{"id":2,"name":"account 2","balance":500,"createdAt":1531627983528,"updatedAt":1531627983528,"isActive":false,"_id":2}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983610,"isActive":false,"_id":1}
 {"$$deleted":true,"_id":1}
-{"id":1,"name":"account 1","balance":0,"createdAt":1531616274170,"updatedAt":1531616274183,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":800,"createdAt":1531627983525,"updatedAt":1531627983610,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983620,"isActive":false,"_id":1}
 {"$$deleted":true,"_id":1}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274183,"isActive":false,"_id":1}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274238,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":800,"createdAt":1531627983525,"updatedAt":1531627983620,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983628,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983633,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983637,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983641,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983645,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983648,"isActive":false,"_id":1}
 {"$$deleted":true,"_id":1}
-{"id":1,"name":"account 1","balance":500,"createdAt":1531616274170,"updatedAt":1531616274238,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":700,"createdAt":1531627983525,"updatedAt":1531627983648,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983657,"isActive":false,"_id":1}
 {"$$deleted":true,"_id":1}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274238,"isActive":false,"_id":1}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274255,"isActive":false,"_id":1}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274264,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":700,"createdAt":1531627983525,"updatedAt":1531627983657,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983664,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983674,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983685,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983693,"isActive":false,"_id":1}
+{"id":2,"name":"account 2","balance":500,"createdAt":1531627983528,"updatedAt":1531627983694,"isActive":false,"_id":2}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":1200,"createdAt":1531627983525,"updatedAt":1531627983693,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":2}
+{"id":2,"name":"account 2","balance":300,"createdAt":1531627983528,"updatedAt":1531627983694,"isActive":false,"_id":2}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983703,"isActive":false,"_id":1}
+{"id":2,"name":"account 2","balance":500,"createdAt":1531627983528,"updatedAt":1531627983704,"isActive":false,"_id":2}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":800,"createdAt":1531627983525,"updatedAt":1531627983703,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":2}
+{"id":2,"name":"account 2","balance":700,"createdAt":1531627983528,"updatedAt":1531627983704,"isActive":false,"_id":2}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983718,"isActive":false,"_id":1}
+{"id":2,"name":"account 2","balance":500,"createdAt":1531627983528,"updatedAt":1531627983719,"isActive":false,"_id":2}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983725,"isActive":false,"_id":1}
+{"id":2,"name":"account 2","balance":500,"createdAt":1531627983528,"updatedAt":1531627983725,"isActive":false,"_id":2}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983731,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":0,"createdAt":1531627983525,"updatedAt":1531627983731,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983731,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983746,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":500,"createdAt":1531627983525,"updatedAt":1531627983746,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983746,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983761,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":1500,"createdAt":1531627983525,"updatedAt":1531627983761,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983761,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983771,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":1500,"createdAt":1531627983525,"updatedAt":1531627983771,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983771,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983782,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":1500,"createdAt":1531627983525,"updatedAt":1531627983782,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":400,"createdAt":1531627983525,"updatedAt":1531627983787,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983792,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":800,"createdAt":1531627983525,"updatedAt":1531627983792,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":2}
+{"id":2,"name":"account 2","balance":700,"createdAt":1531627983528,"updatedAt":1531627983725,"isActive":false,"_id":2}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983804,"isActive":false,"_id":1}
+{"id":2,"name":"account 2","balance":500,"createdAt":1531627983528,"updatedAt":1531627983805,"isActive":false,"_id":2}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":800,"createdAt":1531627983525,"updatedAt":1531627983804,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":2}
+{"id":2,"name":"account 2","balance":700,"createdAt":1531627983528,"updatedAt":1531627983805,"isActive":false,"_id":2}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531627983525,"updatedAt":1531627983815,"isActive":false,"_id":1}
+{"id":2,"name":"account 2","balance":500,"createdAt":1531627983528,"updatedAt":1531627983816,"isActive":false,"_id":2}

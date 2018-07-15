@@ -121,31 +121,29 @@ module.exports = {
     let data = await sails.helpers.getReqRecord( Operation, req );
     let previous = await Operation.findOne( data.id );
     if ( previous.destination ){
-      await sails.helpers.transfer.with({
-        model: Account,
-        origin: previous.destination,
-        destination: previous.account,
-        amount: previous.amount
-      });
-    } else {
-      let accountData = {
-        model: Account,
-        id: previous.account,
-        amount: previous.amount
-      };
-      if ( previous.isDeposit ){
+      return res.badRequest( sails.helpers.error( 'cannotDeleteTransfer' ));
+    }
+    let accountData = {
+      model: Account,
+      id: previous.account,
+      amount: previous.amount
+    };
+    if ( previous.isDeposit ){
+      try {
         let substraction = await sails.helpers.validateOperation.with( accountData )
-          .intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( 'account' ));
+            .intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( 'account' ));
         await sails.helpers.updateAndPublish.with( substraction );
-      } else {
-        await sails.helpers.performIncome.with( accountData );
-        if ( previous.budget ) {
-          await sails.helpers.performIncome.with({
-            model: Budget,
-            id: previous.budget,
-            amount: previous.amount
-          });
-        }
+      }catch ( err ) {
+        return res.badRequest( err );
+      }
+    } else {
+      await sails.helpers.performIncome.with( accountData );
+      if ( previous.budget ) {
+        await sails.helpers.performIncome.with({
+          model: Budget,
+          id: previous.budget,
+          amount: previous.amount
+        });
       }
     }
     await sails.helpers.destroyAndPublish.with({
@@ -154,8 +152,36 @@ module.exports = {
       req,
     });
     res.ok( previous );
-  }
+  },
 
+  async makeTransfer( req, res ){
+    try{
+      let data = req.body;
+      let model = global[data.type];
+      await sails.helpers.transfer.with({
+        model,
+        origin: data.origin,
+        destination: data.destination,
+        amount: data.amount
+      }).intercept( 'insufficientFunds', () => sails.helpers.throwInsufficientFunds( data.type.toLower()));
+      let newInstance = 'transferSuccess';
+      if ( data.type === 'Account' ){
+        newInstance = await sails.helpers.createAndPublish.with({
+          model: Operation,
+          req,
+          data: {
+            account: data.origin,
+            destination: data.destination,
+            amount: data.amount,
+            description: data.description
+          }
+        });
+      }
+      res.ok( newInstance );
+    } catch( err ){
+      res.badRequest( err );
+    }
+  },
 };
 
 
