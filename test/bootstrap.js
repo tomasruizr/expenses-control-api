@@ -14,6 +14,12 @@ before( function( done ) {
     models:{
       migrate: 'drop'
     },
+    sockets: {
+      // onlyAllowOrigins: ['http://localhost:3000']
+    },
+    session:{
+      // secret: 'extremely-secure-keyboard-cat'
+    },
     datastores:{
       default: {
         identity: 'test',

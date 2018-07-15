@@ -39,21 +39,21 @@ module.exports = {
       responseType: 'notFound'
     }
   },
-  fn: async function (inputs, exits) {
-    let previous = await inputs.model.findOne(inputs.id);
-    let data = Object.assign({}, previous);
-    if (!data){
+  fn: async function ( inputs, exits ) {
+    let previous = await inputs.model.findOne( inputs.id );
+    let data = Object.assign({}, previous );
+    if ( !data ){
       throw 'recordNotFount';
     }
-    if (typeof inputs.amount !== 'number' || inputs.amount <= 0){
+    if ( typeof inputs.amount !== 'number' || inputs.amount <= 0 ){
       throw 'invalidAmount';
     }
-    if (inputs.substraction){
+    if ( inputs.substraction ){
       data.balance += inputs.rollback - inputs.amount;
     } else {
       data.balance += inputs.amount;
     }
-    if (data.balance < 0){
+    if ( data.balance < 0 ){
       throw 'insufficientFunds';
     }
     return exits.success({

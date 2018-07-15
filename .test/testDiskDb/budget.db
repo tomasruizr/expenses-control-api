@@ -1,3 +1,15 @@
 {"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
-{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531546209942,"updatedAt":1531546209942,"anualAmount":0,"isActive":true,"_id":1}
-{"id":2,"name":"budget 2","amount":1000,"balance":1000,"createdAt":1531546209942,"updatedAt":1531546209942,"anualAmount":0,"isActive":true,"_id":2}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274175,"anualAmount":0,"isActive":true,"_id":1}
+{"id":2,"name":"budget 2","amount":500,"balance":500,"createdAt":1531616274175,"updatedAt":1531616274175,"anualAmount":0,"isActive":true,"_id":2}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274185,"anualAmount":0,"isActive":true,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":0,"createdAt":1531616274175,"updatedAt":1531616274185,"anualAmount":0,"isActive":true,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274185,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274239,"anualAmount":0,"isActive":true,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":500,"createdAt":1531616274175,"updatedAt":1531616274239,"anualAmount":0,"isActive":true,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274239,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274255,"anualAmount":0,"isActive":true,"_id":1}
+{"id":1,"name":"budget 1","amount":1000,"balance":1000,"createdAt":1531616274175,"updatedAt":1531616274264,"anualAmount":0,"isActive":true,"_id":1}

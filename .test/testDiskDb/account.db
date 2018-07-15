@@ -1,11 +1,15 @@
 {"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531546209938,"updatedAt":1531546209938,"isActive":false,"_id":1}
-{"id":2,"name":"account 2","balance":1000,"createdAt":1531546209942,"updatedAt":1531546209942,"isActive":false,"_id":2}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531546209938,"updatedAt":1531546209951,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274170,"isActive":false,"_id":1}
+{"id":2,"name":"account 2","balance":500,"createdAt":1531616274174,"updatedAt":1531616274174,"isActive":false,"_id":2}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274183,"isActive":false,"_id":1}
 {"$$deleted":true,"_id":1}
-{"id":1,"name":"account 1","balance":700,"createdAt":1531546209938,"updatedAt":1531546209951,"isActive":false,"_id":1}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531546209938,"updatedAt":1531546209994,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":0,"createdAt":1531616274170,"updatedAt":1531616274183,"isActive":false,"_id":1}
 {"$$deleted":true,"_id":1}
-{"id":1,"name":"account 1","balance":700,"createdAt":1531546209938,"updatedAt":1531546209994,"isActive":false,"_id":1}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531546209938,"updatedAt":1531546210007,"isActive":false,"_id":1}
-{"id":1,"name":"account 1","balance":1000,"createdAt":1531546209938,"updatedAt":1531546210015,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274183,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274238,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":500,"createdAt":1531616274170,"updatedAt":1531616274238,"isActive":false,"_id":1}
+{"$$deleted":true,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274238,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274255,"isActive":false,"_id":1}
+{"id":1,"name":"account 1","balance":1000,"createdAt":1531616274170,"updatedAt":1531616274264,"isActive":false,"_id":1}
